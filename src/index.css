@@ -1,0 +1,20 @@
+@layer base {
+  body { font-family: 'Inter', sans-serif; }
+}
+
+/* small interactive styles you had in the HTML */
+.movie-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.movie-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+.btn-primary { transition: all 0.3s ease; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4); }
+.nav-link { transition: color 0.3s ease; }
+.nav-link:hover { color: #dc2626; }
+
+/* clamp description to 3 lines */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
