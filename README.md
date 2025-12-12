@@ -1,71 +1,111 @@
-# 🎬 Movie Database App — ALX Frontend Capstone Project
+🎬 Movie Database App — ALX Frontend Capstone Project
 
-A responsive and interactive Movie Database application built with *React, **JavaScript, and **Tailwind CSS*.  
-This project allows users to *search for movies, **view movie details*, and interact with a clean, modern UI inspired by streaming platforms.
+A sleek, responsive Movie Database Application built using React, JavaScript, and Tailwind CSS.
+The app provides users with the ability to search for movies, explore trending and popular content, and interact with a streaming-style interface.
 
-This repository contains *Week 3 of the Capstone Project*:  
-👉 *Landing Page + Search UI Setup*
+This repo reflects Week 3 of the ALX Capstone Project:
+👉 Landing Page + Search UI Setup
 
-More features will be developed in subsequent weeks as required by ALX.
 
----
+🚀 Features Completed (Part 3)
 
-## 🚀 Features Implemented
+✔ Landing Page — High-Fidelity UI
 
-### ✔ 1. Landing Page UI (High Fidelity Implementation)
-- Responsive hero section  
-- Search input field  
-- Clean, Netflix-inspired layout  
-- Tailwind-based styling  
+Clean, minimalist layout inspired by Netflix
 
-### ✔ 2. Basic Search Component
-- Users can type a movie name  
-- State handling for input interaction  
-- Pre-setup for API integration (coming soon)
+Responsive hero section with featured movie
 
----
+Trending and Popular movie grids
 
-## 🗂 Project Structure
-movie-db/ │── src/ │   ├── components/ │   │   ├── SearchBar.jsx │   │   └── Navbar.jsx (if created) │   ├── pages/ │   │   └── LandingPage.jsx │   ├── App.jsx │   └── index.css │── public/ │── package.json │── vite.config.js └── README.md
+Tailwind-powered styling for modern design
 
----
 
-## 🛠 Tech Stack
+✔ Search Component
 
-- *React (Vite)*
-- *Tailwind CSS*
-- *JavaScript (ES6+)*
-- *OMDB API* (integrated in coming weeks)
+Interactive search input field
 
----
+Typing state management
 
-🌍 Deployment (Once Completed)
+Ready for API integration (OMDB)
 
-After finishing core features:
 
-Deploy with Netlify or Vercel
+🧩 Planned Features (Part 4 and Beyond)
 
-🧩 Upcoming Features
+Part 4 — Search Results Page
 
-Movie search using OMDB API
+Fully responsive search results layout
 
-Movie details page
+Display dynamic movie cards
 
-Error handling
+Pagination & sorting
 
-Favorites (local storage)
+“No results” feedback for empty queries
 
-Pagination
 
-Filtering & sorting
+Future Weeks
 
-Trailer section
+Movie Details Page
 
-Light/Dark mode
+Favorites (Local Storage)
 
-Internationalization
+Trailer Section
+
+Filters & Sorting
+
+Light/Dark Mode Toggle
+
+Internationalization (i18n)
+
+
+
+🗂 Project Structure
+
+movie-db/
+│── src/
+│   ├── components/
+│   │   ├── Nav.jsx
+│   │   ├── Hero.jsx
+│   │   ├── SearchBar.jsx
+│   │   ├── MovieGrid.jsx
+│   │   └── SearchResultCard.jsx
+│   ├── pages/
+│   │   ├── LandingPage.jsx
+│   │   └── SearchResults.jsx
+│   ├── App.jsx
+│   └── index.css
+│
+├── public/
+├── package.json
+├── vite.config.js
+└── README.md
+
+
+
+🛠 Tech Stack
+
+React (Vite)
+
+Tailwind CSS
+
+JavaScript (ES6+)
+
+OMDB API (integration coming soon)
+
+
+
+🌍 Deployment Plan
+
+Deploy using Vercel or Netlify
+
+Continuous updates as features are completed
+
+Public link shared for ALX submission
+
+
 
 ✨ Author
 
 Otaye Favour Eloghosahumwen
-Frontend Developer (ALX Frontend Engineering Program)
+Frontend Developer — ALX Frontend Engineering Program
+
+> “Consistency compounds — small daily progress becomes unstoppable growth.”
