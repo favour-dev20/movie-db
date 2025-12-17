@@ -1,15 +1,39 @@
+// src/components/SearchBar.jsx
 import React, { useState } from "react";
 
-export default function SearchBar({ onSearch }) {
-  // local input state
-  const [q, setQ] = useState("");
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+const BASE_URL = "https://www.omdbapi.com/";
 
-  const doSearch = () => {
-    // call optional callback passed by App
-    if (onSearch) onSearch(q);
+export default function SearchBar({ onSearch }) {
+  const [q, setQ] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const doSearch = async () => {
+    if (!q.trim()) return;
+    setLoading(true);
+    setError("");
+
+    try {
+      const res = await fetch(
+        `${BASE_URL}?s=${encodeURIComponent(q)}&page=1&apikey=${API_KEY}`
+      );
+      const data = await res.json();
+
+      if (data.Response === "False") {
+        setError(data.Error);
+        if (onSearch) onSearch([], q, data.Error);
+      } else {
+        if (onSearch) onSearch(data.Search, q, "");
+      }
+    } catch (err) {
+      setError("Something went wrong. Try again.");
+      if (onSearch) onSearch([], q, "Something went wrong. Try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
-  // allow Enter key to submit
   const handleKey = (e) => {
     if (e.key === "Enter") doSearch();
   };
@@ -29,10 +53,13 @@ export default function SearchBar({ onSearch }) {
       </div>
       <button
         onClick={doSearch}
+        disabled={loading}
         className="btn-primary bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold"
       >
-        Search
+        {loading ? "Searching..." : "Search"}
       </button>
+
+      {error && <p className="text-red-500 mt-2">{error}</p>}
     </div>
   );
 }
