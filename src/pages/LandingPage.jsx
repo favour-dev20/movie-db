@@ -18,11 +18,11 @@ export default function LandingPage() {
       {/* Navigation */}
       <Nav />
 
-      {/* Hero Section (LOGO SHOULD BE INSIDE HERO) */}
+      {/* Hero Section */}
       <Hero />
 
       {/* Search Section */}
-      <div className="max-w-7xl mx-auto px-4 -mt-10 relative z-10 mb-12">
+      <div className="max-w-7xl mx-auto px-4 mt-6 sm:mt-12 mb-12 relative z-10">
         <div className="bg-gray-800 rounded-xl p-6 shadow-2xl">
           <SearchBar onSearch={handleSearch} />
         </div>
