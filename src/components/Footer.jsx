@@ -1,47 +1,56 @@
-import React from "react";
+import { FaTwitter, FaGithub, FaLinkedin, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-950 border-t border-gray-800 mt-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Company</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white">About Us</a></li>
-              <li><a href="#" className="hover:text-white">Careers</a></li>
-              <li><a href="#" className="hover:text-white">Press</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Support</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white">Contact</a></li>
-              <li><a href="#" className="hover:text-white">FAQ</a></li>
-              <li><a href="#" className="hover:text-white">Help Center</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Legal</h3>
-            <ul className="space-y-2 text-gray-400">
-              <li><a href="#" className="hover:text-white">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white">Cookie Policy</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="font-semibold text-lg mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white text-xl"><i className="fab fa-facebook"></i></a>
-              <a href="#" className="text-gray-400 hover:text-white text-xl"><i className="fab fa-twitter"></i></a>
-              <a href="#" className="text-gray-400 hover:text-white text-xl"><i className="fab fa-instagram"></i></a>
-              <a href="#" className="text-gray-400 hover:text-white text-xl"><i className="fab fa-youtube"></i></a>
-            </div>
-          </div>
-        </div>
+    <footer className="bg-gray-900 border-t border-gray-800 mt-20">
+      <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
 
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
-          <p>© 2025 MovieDB. All rights reserved.</p>
+        {/* Logo / Name */}
+        <p className="text-gray-400 text-sm">
+          © {new Date().getFullYear()} MovieDB — Built by Favour Otaye
+        </p>
+
+        {/* Social Links */}
+        <div className="flex gap-6 text-xl text-gray-400">
+          <a
+            href="https://twitter.com/favour_otaye"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+            aria-label="Twitter"
+          >
+            <FaTwitter />
+          </a>
+
+          <a
+            href="https://github.com/favour-dev20"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </a>
+
+          <a
+            href="https://linkedin.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedin />
+          </a>
+
+          <a
+            href="https://instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition"
+            aria-label="Instagram"
+          >
+            <FaInstagram />
+          </a>
         </div>
       </div>
     </footer>

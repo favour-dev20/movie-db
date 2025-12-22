@@ -1,6 +1,8 @@
 // src/pages/SearchResults.jsx
 import React, { useEffect, useState, useCallback } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
+import Nav from "../components/Nav";
+import Footer from "../components/Footer";
 import SearchResultCard from "../components/SearchResultCard";
 import SearchBar from "../components/SearchBar";
 
@@ -47,7 +49,7 @@ export default function SearchResults() {
     []
   );
 
-  // Run search when URL query changes
+  // Run search whenever the URL query changes
   useEffect(() => {
     if (urlQuery) {
       setQuery(urlQuery);
@@ -60,27 +62,37 @@ export default function SearchResults() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      {/* Search Header */}
-      <div className="bg-gray-800 border-b border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold mb-3">Search Results</h1>
+      <Nav />
+
+      {/* Header / Search Area */}
+      <div className="bg-gray-800 border-b border-gray-700 pt-20">
+        {/* ↑ pt-20 fixes search bar being hidden */}
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <h1 className="text-3xl font-bold mb-2">Search Results</h1>
+
+          {/* Back to Home */}
+          <Link
+            to="/"
+            className="inline-block mb-4 text-sm bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg"
+          >
+            ← Back to Home
+          </Link>
 
           {query && (
             <p className="text-gray-400 mb-4">
-              Showing results for <span className="text-white">"{query}"</span>
+              Showing results for{" "}
+              <span className="text-white font-semibold">"{query}"</span>
             </p>
           )}
 
-          <div className="mt-4">
-            <SearchBar
-              initialValue={query}
-              onSearch={(value) => {
-                setQuery(value);
-                setPage(1);
-                performSearch(value, 1);
-              }}
-            />
-          </div>
+          <SearchBar
+            initialValue={query}
+            onSearch={(value) => {
+              setQuery(value);
+              setPage(1);
+              performSearch(value, 1);
+            }}
+          />
         </div>
       </div>
 
@@ -106,8 +118,9 @@ export default function SearchResults() {
               ))}
             </div>
 
+            {/* Pagination */}
             {totalPages > 1 && (
-              <div className="mt-10 flex justify-center gap-4">
+              <div className="mt-10 flex justify-center gap-4 items-center">
                 <button
                   disabled={page === 1}
                   onClick={() => {
@@ -140,13 +153,17 @@ export default function SearchResults() {
 
         {!loading && !error && results.length === 0 && (
           <div className="text-center py-24">
-            <h2 className="text-2xl font-semibold mb-2">No movies found</h2>
+            <h2 className="text-2xl font-semibold mb-2">
+              No movies found
+            </h2>
             <p className="text-gray-400">
               Try searching with a different keyword.
             </p>
           </div>
         )}
       </div>
+
+      <Footer />
     </div>
   );
 }

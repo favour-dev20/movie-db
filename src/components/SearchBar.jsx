@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-export default function SearchBar() {
-  const [query, setQuery] = useState("");
+export default function SearchBar({ initialValue = "" }) {
+  const [query, setQuery] = useState(initialValue);
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -11,16 +11,16 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="flex gap-4">
+    <div className="flex gap-3">
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="Search for movies..."
-        className="flex-1 bg-gray-900 px-4 py-3 rounded-lg"
+        placeholder="Search movies..."
+        className="flex-1 px-4 py-3 rounded-lg bg-gray-900 border border-gray-700"
       />
       <button
         onClick={handleSearch}
-        className="bg-red-600 px-8 py-3 rounded-lg font-semibold"
+        className="bg-red-600 px-6 rounded-lg font-semibold"
       >
         Search
       </button>
