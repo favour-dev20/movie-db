@@ -1,3 +1,4 @@
+// src/pages/MovieDetails.jsx
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 
@@ -9,12 +10,11 @@ export default function MovieDetails() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const fromSearch = location.state?.fromSearch;
+
   const [movie, setMovie] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
-  // Where the user came from (Search page passes this)
-  const fromSearch = location.state?.fromSearch || "/search";
 
   useEffect(() => {
     const fetchMovie = async () => {
@@ -22,7 +22,9 @@ export default function MovieDetails() {
       setError("");
 
       try {
-        const res = await fetch(`${BASE_URL}?i=${imdbID}&apikey=${API_KEY}`);
+        const res = await fetch(
+          `${BASE_URL}?i=${imdbID}&apikey=${API_KEY}`
+        );
         const data = await res.json();
 
         if (data.Response === "False") {
@@ -57,12 +59,12 @@ export default function MovieDetails() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <div className="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row gap-8">
-
+        
         {/* Poster */}
         <img
           src={movie.Poster}
           alt={movie.Title}
-          className="w-full md:w-64 rounded-lg shadow-lg"
+          className="w-full md:w-64 max-h-[450px] object-cover rounded-lg shadow-lg"
         />
 
         {/* Details */}
@@ -87,20 +89,22 @@ export default function MovieDetails() {
             <strong>IMDB Rating:</strong> {movie.imdbRating}
           </p>
 
-          {/* ✅ BACK OPTIONS */}
+          {/* Back buttons */}
           <div className="flex gap-4 mt-6 flex-wrap">
+            {fromSearch && (
+              <button
+                onClick={() => navigate(fromSearch)}
+                className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-semibold"
+              >
+                🔍 Back to Search
+              </button>
+            )}
+
             <button
               onClick={() => navigate("/")}
               className="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg font-semibold"
             >
               🏠 Back Home
-            </button>
-
-            <button
-              onClick={() => navigate(fromSearch)}
-              className="bg-red-600 hover:bg-red-700 px-6 py-3 rounded-lg font-semibold"
-            >
-              🔍 Back to Search
             </button>
           </div>
         </div>

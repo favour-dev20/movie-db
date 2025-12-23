@@ -1,11 +1,19 @@
-import { useNavigate } from "react-router-dom";
+// src/components/SearchResultCard.jsx
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function SearchResultCard({ movie }) {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div
-      onClick={() => navigate(`/movie/${movie.imdbID}`)}
+      onClick={() =>
+        navigate(`/movie/${movie.imdbID}`, {
+          state: {
+            fromSearch: `/search${location.search}`,
+          },
+        })
+      }
       className="bg-gray-800 rounded-lg overflow-hidden cursor-pointer hover:scale-105 transition-transform duration-300"
     >
       {/* Poster */}
